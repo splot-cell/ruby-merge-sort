@@ -9,26 +9,21 @@ def merge_sort(arr)
   right = merge_sort(arr[mid..-1])
 
   # Merge two sides
-  left_index = 0
-  right_index = 0
   merged = []
-  while left_index < left.length && right_index < right.length
-    if left[left_index] <= right[right_index]
-      merged << left[left_index]
-      left_index += 1
+  until left.empty? || right.empty?
+    if left.first <= right.first
+      merged << left.shift
     else
-      merged << right[right_index]
-      right_index += 1
+      merged << right.shift
     end
   end
-  if right_index == right.length
-    merged.concat(left[left_index..-1])
-  else
-    merged.concat(right[right_index..-1])
-  end
-  merged
+  merged.concat(left).concat(right)
 end
 
 pp merge_sort([1, 2, 3, 4, 6, 5, 7, 8])
 pp merge_sort([8, 2, 6, 4, 3, 5, 7, 1])
 pp merge_sort([8, 2, 2, 4, 3, 5, 7, 1])
+
+test = []
+100.times { test << rand(100) }
+pp merge_sort(test)

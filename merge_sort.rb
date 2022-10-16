@@ -6,12 +6,13 @@ def merge_sort(arr)
   # Split into two and sort
   mid = arr.length / 2
   left = merge_sort(arr[0...mid])
-  right = merge_sort(arr[mid..-1])
+  right = merge_sort(arr[mid..])
 
   # Merge two sides
   merged = []
   until left.empty? || right.empty?
-    left.first <= right.first ? merged << left.shift : merged << right.shift
+    next_el = left.first <= right.first ? left.shift : right.shift
+    merged << next_el
   end
   merged.concat(left).concat(right)
 end

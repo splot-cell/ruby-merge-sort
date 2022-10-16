@@ -3,24 +3,18 @@
 def merge_sort(arr)
   return arr if arr.length < 2
 
+  # Split into two and sort
   mid = arr.length / 2
-  # Split into two
-  left = arr[0...mid]
-  right = arr[mid..-1]
-  # Sort left side
-  left = merge_sort(left)
-  # Sort right side
-  right = merge_sort(right)
+  left = merge_sort(arr[0...mid])
+  right = merge_sort(arr[mid..-1])
+
   # Merge two sides
   left_index = 0
   right_index = 0
   merged = []
   while left_index < left.length && right_index < right.length
-    # Compare next left el and first right el
     if left[left_index] <= right[right_index]
-      # Add lower el to return array
       merged << left[left_index]
-      # Advance counter for the array of lower el
       left_index += 1
     else
       merged << right[right_index]

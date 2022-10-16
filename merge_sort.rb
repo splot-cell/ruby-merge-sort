@@ -17,11 +17,9 @@ def merge_sort(arr)
   merged = []
   arr.length.times do
     if right[right_index].nil?
-      merged << left[left_index]
-      left_index += 1
+      return merged.concat(left[left_index..-1])
     elsif left[left_index].nil?
-      merged << right[right_index]
-      right_index += 1
+      return merged.concat(right[right_index..-1])
     # Compare next left el and first right el
     elsif left[left_index] <= right[right_index]
       # Add lower el to return array
@@ -35,7 +33,6 @@ def merge_sort(arr)
   end
   merged
 end
-
 
 pp merge_sort([1, 2, 3, 4, 6, 5, 7, 8])
 pp merge_sort([8, 2, 6, 4, 3, 5, 7, 1])

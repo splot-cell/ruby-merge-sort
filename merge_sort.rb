@@ -11,11 +11,7 @@ def merge_sort(arr)
   # Merge two sides
   merged = []
   until left.empty? || right.empty?
-    if left.first <= right.first
-      merged << left.shift
-    else
-      merged << right.shift
-    end
+    left.first <= right.first ? merged << left.shift : merged << right.shift
   end
   merged.concat(left).concat(right)
 end
